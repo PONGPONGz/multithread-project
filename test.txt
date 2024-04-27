@@ -1,0 +1,9 @@
+cofee
+ant
+elephant
+crab
+capybara
+pteranodon
+information
+communication
+technology
