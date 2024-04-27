@@ -1,4 +1,4 @@
-# How tu run
+# How to run
 - gcc \<path to main.c\> -o \<preferred output filename\>
 - ./\<output filename\>
 ### Example
