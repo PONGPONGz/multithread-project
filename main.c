@@ -25,6 +25,11 @@ void* readInput() {
     while (1) {
         // Read a word
         if (scanf("%s", word) != EOF) {
+            // Inputting ":q" will terminate the loop.
+            if (strcmp(word, ":q") == 0) {
+                break;
+            }
+
             // Store the word in the buffer
             buffer[buffer_index] = malloc(strlen(word) + 1); // +1 for the null terminator
             if (buffer[buffer_index] == NULL) {
@@ -71,15 +76,15 @@ int main() {
     pthread_create(&outputThread, NULL, saveOutput, NULL);
 
     pthread_join(inputThread, NULL);
-    pthread_join(spellcheckThread, NULL);
-    pthread_join(countWordsThread, NULL);
-    pthread_join(outputThread, NULL);
-
     // Print buffer contents
     printf("Buffer contents:\n");
     for (int i = 0; i < buffer_index; i++) {
         printf("word: %s\n", buffer[i]);
     }
+
+    pthread_join(spellcheckThread, NULL);
+    pthread_join(countWordsThread, NULL);
+    pthread_join(outputThread, NULL);
 
     return 0; 
 }
